@@ -1,0 +1,130 @@
+
+
+
+#posts {
+  background-color: rgb(218, 216, 216);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(28, 23, 28);
+  margin: 3px;
+  /* padding: 5px;  */
+  width: 65%;
+  
+  
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.content {
+  font-size: 2rem;
+}
+
+.content {
+  color: rgb(143, 146, 146);
+  margin-bottom: 8px;
+  margin-left: 0;
+  font-weight: 300;
+}
+
+body {
+  background-color: rgb(216, 217, 218);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 3rem;
+  border-bottom: 8px solid black;
+  background-color: rgb(48, 84, 109);
+  
+  
+  
+}
+  
+  
+
+#loginDiv {
+  margin-bottom: 15px;
+}
+
+
+#listForm {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-left: 20px;
+  /* border:2px solid black; */
+}
+
+#profileLink {
+  margin-right: 20px;
+}
+
+
+
+#profilePage {
+  height: 100%;
+}
+
+#myMessages {
+  border: 2px solid black;
+  background-color: rgb(218, 216, 216);
+  width: 20%;
+  margin: 4px;
+}
+
+button {
+  display: block;
+  width: 100px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 100%;
+  box-shadow: black;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(53, 55, 53);
+  height: 50%
+}
+
+button:hover {
+  background-color: rgba(84, 73, 73, 0.781);
+  box-shadow: 0 5px rgba(192, 189, 189, 0.514);
+}
+
+#app {
+  background-color: white;
+}
+
+#newPosts {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: rgb(218,216,216) ;
+  
+}
+
+h1 {
+  font-size: 4rem;
+}
