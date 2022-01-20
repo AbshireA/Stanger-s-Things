@@ -6,12 +6,12 @@ import { getUser } from "../strangersAPI";
 
 const Form = (props) => {
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [usernameRegister, setUsernameRegister] = useState('')
-    const [passwordRegister, setPasswordRegister] = useState('')
+    const [username, syncUsername] = useState('')
+    const [password, syncPassword] = useState('')
+    const [usernameRegister, syncUsernameRegister] = useState('')
+    const [passwordRegister, syncPasswordRegister] = useState('')
 
-    const {loginToken, setLoginToken, isLoggedin, setIsLoggedIn, userData, setUserData} = props
+    const {loginToken, syncLoginToken, isLoggedin, syncIsLoggedIn, userData, syncUserData} = props
     
     async function register(event) {
         event.preventDefault()
@@ -31,8 +31,8 @@ const Form = (props) => {
             }
           )
         let info = await response.json()
-        setUsernameRegister("")
-        setPasswordRegister("")
+        syncUsernameRegister("")
+        syncPasswordRegister("")
     }
   
     async function login(event) {
@@ -55,25 +55,25 @@ const Form = (props) => {
       )
 
       let user = await response.json()
-        setIsLoggedIn(true)
-        setLoginToken(user.data.token)
+        syncIsLoggedIn(true)
+        syncLoginToken(user.data.token)
       let newUser = getUser(user.data.token)
-        setUserData(newUser)
+        syncUserData(newUser)
       }catch(err){
-        setIsLoggedIn(false)
+        syncIsLoggedIn(false)
         console.log(err)
       }
-        setUsername("")
-        setPassword("")
+        syncUsername("")
+        syncPassword("")
     }
   
 
 
     function logout(){
-        setIsLoggedIn(false)
-        setLoginToken('')  
-        setUsername("")
-        setPassword("")
+        syncIsLoggedIn(false)
+        syncLoginToken('')  
+        syncUsername("")
+        syncPassword("")
     }
 
     return (
@@ -85,9 +85,9 @@ const Form = (props) => {
         <h2>Login </h2>
         <form onSubmit={login}>
           <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' value={username} onChange={(event) => setUsername(event.target.value)}/>
+          <input type='text' name='username' value={username} onChange={(event) => syncUsername(event.target.value)}/>
           <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
+          <input type='password' name='password' value={password} onChange={(event) => syncPassword(event.target.value)}/>
           <button type='submit'>Login</button>
         </form>
         </div>
@@ -96,9 +96,9 @@ const Form = (props) => {
         <h2>Register: </h2>
             <form onSubmit={register}>
                 <label htmlFor='usernameRegister'>Create Username:</label>
-                <input type='text' name='usernameRegister' value={usernameRegister} onChange={(event) => setUsernameRegister(event.target.value)}/>
+                <input type='text' name='usernameRegister' value={usernameRegister} onChange={(event) => syncUsernameRegister(event.target.value)}/>
                 <label htmlFor='passwordRegister'>Create Password:</label>
-                <input type='password' name='passwordRegister' value={passwordRegister} onChange={(event) => setPasswordRegister(event.target.value)}/>
+                <input type='password' name='passwordRegister' value={passwordRegister} onChange={(event) => syncPasswordRegister(event.target.value)}/>
                 <button type='submit'>Register</button>
             </form>
         </div>

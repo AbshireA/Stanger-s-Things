@@ -11,10 +11,10 @@ const url = 'https://strangers-things.herokuapp.com/api/2111-FTB-ET-WEB-FT/posts
 
 const App = () => {
     
-    const [userData, setUserData] = useState([])
-    const [data, setData] = useState([])
-    const [isLoggedin, setIsLoggedIn] = useState(false)
-    const [loginToken, setLoginToken] = useState('')
+    const [userData, syncUserData] = useState([])
+    const [data, syncData] = useState([])
+    const [isLoggedin, syncIsLoggedIn] = useState(false)
+    const [loginToken, syncLoginToken] = useState('')
 
     return (
         <BrowserRouter>
@@ -27,21 +27,21 @@ const App = () => {
             </div>
 
             <Route path="/">
-                <Form loginToken={loginToken} setLoginToken={setLoginToken} userData={userData} setUserData={setUserData} isLoggedin={isLoggedin} setIsLoggedIn={setIsLoggedIn}/>
+                <Form loginToken={loginToken} syncLoginToken={syncLoginToken} userData={userData} syncUserData={syncUserData} isLoggedin={isLoggedin} syncIsLoggedIn={syncIsLoggedIn}/>
             </Route>
 
             <Route path="/profile"> 
                 { isLoggedin ?
                 <div>
-                    <Profile id="profilePage" isLoggedin={isLoggedin} userData={userData} setUserData={setUserData} loginToken={loginToken} setLoginToken={setLoginToken}/>
-                    <Listing loginToken={loginToken} setLoginToken={setLoginToken} isLoggedin={isLoggedin} setIsLoggedIn={setIsLoggedIn}/>
+                    <Profile id="profilePage" isLoggedin={isLoggedin} userData={userData} syncUserData={syncUserData} loginToken={loginToken} syncLoginToken={syncLoginToken}/>
+                    <Listing loginToken={loginToken} syncLoginToken={syncLoginToken} isLoggedin={isLoggedin} syncIsLoggedIn={syncIsLoggedIn}/>
                 </div> : null
                 }
             </Route>
             
             <Route path='/posts'>
                 <h1>Strangers Things</h1>
-                <Posts id="postPage" data={data} setData={setData} loginToken={loginToken} setLoginToken={setLoginToken} isLoggedin={isLoggedin} setIsLoggedIn={setIsLoggedIn}/>
+                <Posts id="postPage" data={data} syncData={syncData} loginToken={loginToken} syncLoginToken={syncLoginToken} isLoggedin={isLoggedin} syncIsLoggedIn={syncIsLoggedIn}/>
             </Route>
 
         </div>

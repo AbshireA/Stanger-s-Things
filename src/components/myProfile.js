@@ -5,7 +5,7 @@ const Single = (props) => {
 
     const {value, loginToken, index} = props
 
-    async function deleteThisPost(event) {
+    async function deleteMyPost(event) {
         event.preventDefault()
         await deletePost(value._id, loginToken)
         alert("Post deleted")
@@ -31,7 +31,7 @@ const Single = (props) => {
             <span className="title">Delivery: </span>
             <span className="content">{value.willDeliver ? "I will deliver" : "I will not deliver"}</span><br></br>
 
-            <form onSubmit={(event) => {deleteThisPost(event)}}>
+            <form onSubmit={(event) => {deleteMyPost(event)}}>
                 <br></br><button type="submit" className="deleteButton" value={value._id}>DELETE POST</button>
             </form>
         </div>
@@ -44,12 +44,12 @@ const Single = (props) => {
 
 const Profile = (props) => {
 
-    const {userData, setUserData, loginToken} = props
+    const {userData, syncUserData, loginToken} = props
     
     useEffect(() => {
         async function fetchUserData() {
             if(loginToken){
-                setUserData(await getUser(loginToken))
+                syncUserData(await getUser(loginToken))
             }
         }
         fetchUserData()

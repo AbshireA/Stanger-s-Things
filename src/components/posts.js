@@ -7,13 +7,13 @@ import { getPosts, sendMessage } from "../strangersAPI";
 const Post = (props) => {
 
     const {value, loginToken} = props
-    const [message, setMessage] = useState("")
+    const [message, syncMessage] = useState("")
 
     async function sendUserMessage(event){
         event.preventDefault()
         await sendMessage(value._id, loginToken, message)
         alert("message sent")
-        setMessage("")
+        syncMessage("")
     }
 
     
@@ -37,7 +37,7 @@ const Post = (props) => {
 
             { loginToken && !value.isAuthor ?
             <form onSubmit={(event) => {sendUserMessage(event)}}>
-                <br></br><input type="text" className="messageText" value={message} onChange={(event) => setMessage(event.target.value)}></input>
+                <br></br><input type="text" className="messageText" value={message} onChange={(event) => syncMessage(event.target.value)}></input>
                 <br></br><button type="submit" className="message" value={value._id}>Message Seller</button>
             </form>: null
             }
@@ -47,11 +47,11 @@ const Post = (props) => {
 
 const Posts = (props) => {
 
-    const {data, setData, loginToken, setLoginToken, isLoggedIn} = props
+    const {data, syncData, loginToken, syncLoginToken, isLoggedIn} = props
 
     useEffect(() => {
         async function fetchPosts() {
-            setData(await getPosts())
+            syncData(await getPosts())
         }
         fetchPosts()
     }, [loginToken]);

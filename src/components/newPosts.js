@@ -9,15 +9,15 @@ import React, {useState, useEffect} from "react";
 
 const Listing = (props) => {
     
-    const [title, setTitle] = useState("")
-    const [location, setLocation] = useState("")
-    const [description, setDescription] = useState("")
-    const [price, setPrice] = useState("free")
-    const [delivery, setDelivery] = useState(false)
+    const [title, syncTitle] = useState("")
+    const [location, syncLocation] = useState("")
+    const [description, syncDescription] = useState("")
+    const [price, syncPrice] = useState("free")
+    const [delivery, syncDelivery] = useState(false)
 
-    const {loginToken, setLoginToken, isLoggedIn, setIsLoggedIn} = props
+    const {loginToken, syncLoginToken, isLoggedIn, syncIsLoggedIn} = props
 
-    async function makeListing(event) {
+    async function createListing(event) {
       event.preventDefault()
       const response = fetch('https://strangers-things.herokuapp.com/api/2111-FTB-ET-WEB-FT/posts', {
           method: "POST",
@@ -47,16 +47,16 @@ const Listing = (props) => {
           <div id="newPosts">
             <form id='listForm'>
                 <label htmlFor='title'>Title:</label>
-                <input type='text' name='title' value={title} onChange={(event) => setTitle(event.target.value)}/>
+                <input type='text' name='title' value={title} onChange={(event) => syncTitle(event.target.value)}/>
                 <label htmlFor='location'>Location:</label>
-                <input type='text' name='location' value={location} onChange={(event) => setLocation(event.target.value)}/>
+                <input type='text' name='location' value={location} onChange={(event) => syncLocation(event.target.value)}/>
                 <label htmlFor='description'>Item Description:</label>
-                <input type='text' name='description' value={description} onChange={(event) => setDescription(event.target.value)}/>
+                <input type='text' name='description' value={description} onChange={(event) => syncDescription(event.target.value)}/>
                 <label htmlFor='price'>Pricing:</label>
-                <input type='text' name='price' value={price} onChange={(event) => setPrice(event.target.value)}/>
+                <input type='text' name='price' value={price} onChange={(event) => syncPrice(event.target.value)}/>
                 <label htmlFor="delivery">Check box if willing to deliver:</label>
-                <input name="delivery" checked={delivery} type='checkbox' onChange={(event) => setDelivery(event.target.checked)} />
-                <button type='submit' onClick={makeListing}>List my item</button>
+                <input name="delivery" checked={delivery} type='checkbox' onChange={(event) => syncDelivery(event.target.checked)} />
+                <button type='submit' onClick={createListing}>List my item</button>
             </form>
           </div>
         </div>
